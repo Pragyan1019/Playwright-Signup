@@ -1,0 +1,366 @@
+{
+  "validCases": [
+{
+  "id": "valid_001",
+  "description": "All fields valid - standard user",
+  "data": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "rovise7549@synsky.com",
+    "phone": "9700000718",
+    "password": "Secure@123",
+    "confirmPassword": "Secure@123",
+    "agencyName": "Global EduPath Agency",
+    "agencyRole": "Authorized Student Recruitment Consultant",
+    "agencyEmail": "contact@globaledupathagency.com",
+    "agencyWebsite": "www.globaledupathagency.com",
+    "agencyAddress": "45 Education Hub Street, Thamel, Kathmandu, Nepal",
+    "numberOfStudentsRecruited": "1240",
+    "focusArea": "Scholarship Advisory",
+    "successMetrics": "94",
+    "businessRegistrationNumber": "BRN-2019-KTM-007842",
+    "certificationDetail": "ICEF Certified Agency, issued 2021-03-15, expires 2026-03-14"
+  },
+  "expected": {
+    "result": "success",
+    "errors": []
+  } 
+}
+  ],
+
+  "invalidCases": [
+    {
+      "id": "invalid_fn_001",
+      "description": "First name too short - single character",
+      "data": {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "email": "jannnfafdne.doe@example.com",
+        "phone": "9876834567",
+        "password": "Secure@123",
+        "confirmPassword": "Secure@123"
+      },
+      "expected": {
+        "result": "failure",
+        "locator": "errorfirstname"
+      }
+    },
+    {
+      "id": "invalid_fn_002",
+      "description": "First name empty",
+      "data": {
+        "firstName": "",
+        "lastName": "Doe",
+        "email": "tesfadst@example.com",
+        "phone": "9841234567",
+        "password": "Secure@123",
+        "confirmPassword": "Secure@123"
+      },
+      "expected": {
+        "result": "failure",
+        "errors": [
+          { "locator": "errorfirstname" }
+        ]
+      }
+    },
+
+    {
+      "id": "invalid_ln_001",
+      "description": "Last name too short - single character",
+      "data": {
+        "firstName": "John",
+        "lastName": "D",
+        "email": "john.dgsdsg@example.com",
+        "phone": "9841234567",
+        "password": "Secure@123",
+        "confirmPassword": "Secure@123"
+      },
+      "expected": {
+        "result": "failure",
+        "errors": [
+          { "locator": "errorlastname" }
+        ]
+      }
+    },
+    {
+      "id": "invalid_ln_002",
+      "description": "Last name empty",
+      "data": {
+        "firstName": "John",
+        "lastName": "",
+        "email": "johnjlf@example.com",
+        "phone": "9841234590",
+        "password": "Secure@123",
+        "confirmPassword": "Secure@123"
+      },
+      "expected": {
+        "result": "failure",
+        "errors": [
+          { "locator": "errorlastname" }
+        ]
+      }
+    },
+
+    {
+      "id": "invalid_em_001",
+      "description": "Email missing @ symbol",
+      "data": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "johndofteexample.com",
+        "phone": "9841230067",
+        "password": "Secure@123",
+        "confirmPassword": "Secure@123"
+      },
+      "expected": {
+        "result": "failure",
+        "errors": [
+          { "locator": "erroremail"}
+        ]
+      }
+    },
+    {
+      "id": "invalid_em_002",
+      "description": "Email missing domain",
+      "data": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john@",
+        "phone": "9840034567",
+        "password": "Secure@123",
+        "confirmPassword": "Secure@123"
+      },
+      "expected": {
+        "result": "failure",
+        "errors": [
+          { "locator": "erroremail" }
+        ]
+      }
+    },
+    {
+      "id": "invalid_em_003",
+      "description": "Email missing TLD",
+      "data": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "jojghn@example",
+        "phone": "9841234522",
+        "password": "Secure@123",
+        "confirmPassword": "Secure@123"
+      },
+      "expected": {
+        "result": "failure",
+        "errors": [
+          { "locator": "erroremail" }
+        ]
+      }
+    },
+    {
+      "id": "invalid_em_004",
+      "description": "Email with spaces",
+      "data": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john doe@example.com",
+        "phone": "9841234544",
+        "password": "Secure@123",
+        "confirmPassword": "Secure@123"
+      },
+      "expected": {
+        "result": "failure",
+        "errors": [
+          { "locator": "erroremail" }
+        ]
+      }
+    },
+
+    {
+      "id": "invalid_pw_001",
+      "description": "Password too short - less than 8 characters",
+      "data": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john.doeuwwer@example.com",
+        "phone": "9841234523",
+        "password": "Ab@1",
+        "confirmPassword": "Ab@1"
+      },
+      "expected": {
+        "result": "failure",
+        "errors": [
+          { "locator": "errorpassword8chars" }
+        ]
+      }
+    },
+    {
+      "id": "invalid_pw_002",
+      "description": "Password missing number",
+      "data": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john.dohweae@example.com",
+        "phone": "9841234090",
+        "password": "Secure@abc",
+        "confirmPassword": "Secure@abc"
+      },
+      "expected": {
+        "result": "failure",
+        "errors": [
+          { "locator": "errorpasswordnum" }
+        ]
+      }
+    },
+    {
+      "id": "invalid_pw_003",
+      "description": "Password missing special character",
+      "data": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john.dohtre@example.com",
+        "phone": "9841234508",
+        "password": "Secure1234",
+        "confirmPassword": "Secure1234"
+      },
+      "expected": {
+        "result": "failure",
+        "errors": [
+          { "locator": "errorpasswordspecialchar" }
+        ]
+      }
+    },
+    {
+      "id": "invalid_pw_004",
+      "description": "Password empty",
+      "data": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john.dohterhe@example.com",
+        "phone": "9841230367",
+        "password": "",
+        "confirmPassword": ""
+      },
+      "expected": {
+        "result": "failure",
+        "errors": [
+          { "locator": "errorpassword8chars" }
+        ]
+      }
+    },
+
+    {
+      "id": "invalid_cp_001",
+      "description": "Confirm password does not match",
+      "data": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john.dotrwete@example.com",
+        "phone": "9800234567",
+        "password": "Secure@123",
+        "confirmPassword": "Secure@456"
+      },
+      "expected": {
+        "result": "failure",
+        "errors": [
+          { "locator": "mismatchconfirmPassword"}
+        ]
+      }
+    },
+    {
+      "id": "invalid_cp_002",
+      "description": "Confirm password empty while password is filled",
+      "data": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john.dotretwe@example.com",
+        "phone": "9833034567",
+        "password": "Secure@123",
+        "confirmPassword": ""
+      },
+      "expected": {
+        "result": "failure",
+        "errors": [
+          { "locator": "mismatchconfirmPassword" }
+        ]
+      }
+    },
+
+    {
+      "id": "invalid_multi_001",
+      "description": "Multiple errors - short first name, invalid email, short password",
+      "data": {
+        "firstName": "J",
+        "lastName": "Doe",
+        "email": "notanemail",
+        "phone": "9834334567",
+        "password": "abc",
+        "confirmPassword": "abc"
+      },
+      "expected": {
+        "result": "failure",
+        "errors": [
+          { "locator": "errorfirstname"},
+          { "locator": "erroremail"},
+          { "locator": "errorpassword8chars" }
+        ]
+      }
+    },
+    {
+      "id": "invalid_multi_002",
+      "description": "Multiple errors - all fields empty",
+      "data": {
+        "firstName": "",
+        "lastName": "",
+        "email": "",
+        "phone": "",
+        "password": "",
+        "confirmPassword": ""
+      },
+      "expected": {
+        "result": "failure",
+        "errors": [
+          { "locator": "errorfirstname"},
+          { "locator": "errorlastname"},
+          { "locator": "erroremail"},
+          { "locator": "errorpassword8chars"}
+        ]
+      }
+    },
+    {
+      "id": "invalid_multi_003",
+      "description": "Multiple errors - short last name, mismatched passwords",
+      "data": {
+        "firstName": "John",
+        "lastName": "D",
+        "email": "john.dotherwe@example.com",
+        "phone": "9844244567",
+        "password": "Secure@123",
+        "confirmPassword": "Different@123"
+      },
+      "expected": {
+        "result": "failure",
+        "errors": [
+          { "locator": "errorlastname"},
+          { "locator": "mismatchconfirmPassword"}
+        ]
+      }
+    },
+    {
+      "id": "invalid_dupli_001",
+      "description": "Duplicate values",
+      "data": {
+        "firstName": "Jo",
+        "lastName": "Li",
+        "email": "jo.liadvr@mail.com",
+        "phone": "9800000003",
+        "password": "Hello@123",
+        "confirmPassword": "Hello@123"
+      },
+      "expected": {
+        "result": "success",
+        "errors": [
+          {"locator":"phonealreadyexits"}
+        ]
+      }
+    }
+  ]
+}
