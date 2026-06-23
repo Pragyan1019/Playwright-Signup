@@ -49,20 +49,20 @@ test.describe('Sign In Page', () => {
             await preference.submit();
         })
     })
-    // userdata.invalidCases.forEach(({id,description,data,expected})=>{
-    //     test(` ${id} : ${description}`, async ({ setup }) => {
-    //         await setup.fillForm(data.firstName, data.lastName, data.email, data.phone, data.password, data.confirmPassword);
-    //         await setup.clickNext();
-    //         if (expected && expected.errors && expected.errors.length && !id.startsWith("invalid_em")) {
-    //             for (const error of expected.errors) {
-    //                 const locator = setup[error.locator as keyof typeof setup] as Locator;
-    //                 await expect.soft(locator).toBeVisible();
-    //             }
-    //         }
-    //         await expect(setup.page).toHaveURL('https://authorized-partner.vercel.app/register?step=setup')
+    userdata.invalidCases.forEach(({id,description,data,expected})=>{
+        test(` ${id} : ${description}`, async ({ setup }) => {
+            await setup.fillForm(data.firstName, data.lastName, data.email, data.phone, data.password, data.confirmPassword);
+            await setup.clickNext();
+            if (expected && expected.errors && expected.errors.length && !id.startsWith("invalid_em")) {
+                for (const error of expected.errors) {
+                    const locator = setup[error.locator as keyof typeof setup] as Locator;
+                    await expect.soft(locator).toBeVisible();
+                }
+            }
+            await expect(setup.page).toHaveURL('https://authorized-partner.vercel.app/register?step=setup')
             
-    //     })
+        })
 
-    // })
+    })
 
 })
