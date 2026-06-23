@@ -55,6 +55,8 @@ export class Agency{
     }
     async clicknext(){
         await this.nextbtn.click();
+
+
     }
 
 }

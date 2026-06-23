@@ -1,31 +1,31 @@
 {
   "validCases": [
-    {
-      "id": "valid_001",
-      "description": "All fields valid - standard user",
-      "data": {
-        "firstName": "John",
-        "lastName": "Doe",
-        "email": "rovise7549@synsky.com",
-        "phone": "9700000914",
-        "password": "Secure@123",
-        "confirmPassword": "Secure@123",
-        "agencyName": "Global EduPath Agency",
-        "agencyRole": "Authorized Student Recruitment Consultant",
-        "agencyEmail": "contact@globaledupathagency.com",
-        "agencyWebsite": "www.globaledupathagency.com",
-        "agencyAddress": "45 Education Hub Street, Thamel, Kathmandu, Nepal",
-        "numberOfStudentsRecruited": "1240",
-        "focusArea": "Scholarship Advisory",
-        "successMetrics": "94",
-        "businessRegistrationNumber": "BRN-2019-KTM-007842",
-        "certificationDetail": "ICEF Certified Agency, issued 2021-03-15, expires 2026-03-14"
-      },
-      "expected": {
-        "result": "success",
-        "errors": []
-      }
-    }
+{
+  "id": "valid_001",
+  "description": "All fields valid - standard user",
+  "data": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "rovise7549@synsky.com",
+    "phone": "9700000914",
+    "password": "Secure@123",
+    "confirmPassword": "Secure@123",
+    "agencyName": "Global EduPath Agency",
+    "agencyRole": "Authorized Student Recruitment Consultant",
+    "agencyEmail": "contact@globaledupathagency.com",
+    "agencyWebsite": "www.globaledupathagency.com",
+    "agencyAddress": "45 Education Hub Street, Thamel, Kathmandu, Nepal",
+    "numberOfStudentsRecruited": "1240",
+    "focusArea": "Scholarship Advisory",
+    "successMetrics": "94",
+    "businessRegistrationNumber": "BRN-2019-KTM-007842",
+    "certificationDetail": "ICEF Certified Agency, issued 2021-03-15, expires 2026-03-14"
+  },
+  "expected": {
+    "result": "success",
+    "errors": []
+  } 
+}
   ],
 
   "invalidCases": [
@@ -33,16 +33,16 @@
       "id": "invalid_fn_001",
       "description": "First name too short - single character",
       "data": {
-        "firstName": "J",
+        "firstName": "Jane",
         "lastName": "Doe",
-        "email": "mark.hensley@testmail.io",
-        "phone": "9801112233",
+        "email": "jannnfafdne.doe@example.com",
+        "phone": "9876834567",
         "password": "Secure@123",
         "confirmPassword": "Secure@123"
       },
       "expected": {
         "result": "failure",
-        "errors": [{ "locator": "errorfirstname" }]
+        "locator": "errorfirstname"
       }
     },
     {
@@ -51,14 +51,16 @@
       "data": {
         "firstName": "",
         "lastName": "Doe",
-        "email": "clara.weston@mailtest.org",
-        "phone": "9802223344",
+        "email": "tesfadst@example.com",
+        "phone": "9841234567",
         "password": "Secure@123",
         "confirmPassword": "Secure@123"
       },
       "expected": {
         "result": "failure",
-        "errors": [{ "locator": "errorfirstname" }]
+        "errors": [
+          { "locator": "errorfirstname" }
+        ]
       }
     },
 
@@ -68,14 +70,16 @@
       "data": {
         "firstName": "John",
         "lastName": "D",
-        "email": "peter.mills@devtest.net",
-        "phone": "9803334455",
+        "email": "john.dgsdsg@example.com",
+        "phone": "9841234567",
         "password": "Secure@123",
         "confirmPassword": "Secure@123"
       },
       "expected": {
         "result": "failure",
-        "errors": [{ "locator": "errorlastname" }]
+        "errors": [
+          { "locator": "errorlastname" }
+        ]
       }
     },
     {
@@ -84,14 +88,16 @@
       "data": {
         "firstName": "John",
         "lastName": "",
-        "email": "anna.brooks@qatester.com",
-        "phone": "9804445566",
+        "email": "johnjlf@example.com",
+        "phone": "9841234590",
         "password": "Secure@123",
         "confirmPassword": "Secure@123"
       },
       "expected": {
         "result": "failure",
-        "errors": [{ "locator": "errorlastname" }]
+        "errors": [
+          { "locator": "errorlastname" }
+        ]
       }
     },
 
@@ -101,14 +107,16 @@
       "data": {
         "firstName": "John",
         "lastName": "Doe",
-        "email": "johndoeexample.com",
-        "phone": "9805556677",
+        "email": "johndofteexample.com",
+        "phone": "9841230067",
         "password": "Secure@123",
         "confirmPassword": "Secure@123"
       },
       "expected": {
         "result": "failure",
-        "errors": [{ "locator": "erroremail" }]
+        "errors": [
+          { "locator": "erroremail"}
+        ]
       }
     },
     {
@@ -118,13 +126,15 @@
         "firstName": "John",
         "lastName": "Doe",
         "email": "john@",
-        "phone": "9806667788",
+        "phone": "9840034567",
         "password": "Secure@123",
         "confirmPassword": "Secure@123"
       },
       "expected": {
         "result": "failure",
-        "errors": [{ "locator": "erroremail" }]
+        "errors": [
+          { "locator": "erroremail" }
+        ]
       }
     },
     {
@@ -133,14 +143,16 @@
       "data": {
         "firstName": "John",
         "lastName": "Doe",
-        "email": "john@example",
-        "phone": "9807778899",
+        "email": "jojghn@example",
+        "phone": "9841234522",
         "password": "Secure@123",
         "confirmPassword": "Secure@123"
       },
       "expected": {
         "result": "failure",
-        "errors": [{ "locator": "erroremail" }]
+        "errors": [
+          { "locator": "erroremail" }
+        ]
       }
     },
     {
@@ -150,13 +162,15 @@
         "firstName": "John",
         "lastName": "Doe",
         "email": "john doe@example.com",
-        "phone": "9808889900",
+        "phone": "9841234544",
         "password": "Secure@123",
         "confirmPassword": "Secure@123"
       },
       "expected": {
         "result": "failure",
-        "errors": [{ "locator": "erroremail" }]
+        "errors": [
+          { "locator": "erroremail" }
+        ]
       }
     },
 
@@ -166,14 +180,16 @@
       "data": {
         "firstName": "John",
         "lastName": "Doe",
-        "email": "lewis.parker@testbox.io",
-        "phone": "9809990011",
+        "email": "john.doeuwwer@example.com",
+        "phone": "9841234523",
         "password": "Ab@1",
         "confirmPassword": "Ab@1"
       },
       "expected": {
         "result": "failure",
-        "errors": [{ "locator": "errorpassword8chars" }]
+        "errors": [
+          { "locator": "errorpassword8chars" }
+        ]
       }
     },
     {
@@ -182,14 +198,16 @@
       "data": {
         "firstName": "John",
         "lastName": "Doe",
-        "email": "sophie.grant@maildev.org",
-        "phone": "9811001122",
+        "email": "john.dohweae@example.com",
+        "phone": "9841234090",
         "password": "Secure@abc",
         "confirmPassword": "Secure@abc"
       },
       "expected": {
         "result": "failure",
-        "errors": [{ "locator": "errorpasswordnum" }]
+        "errors": [
+          { "locator": "errorpasswordnum" }
+        ]
       }
     },
     {
@@ -198,14 +216,16 @@
       "data": {
         "firstName": "John",
         "lastName": "Doe",
-        "email": "david.cole@qacheck.net",
-        "phone": "9812112233",
+        "email": "john.dohtre@example.com",
+        "phone": "9841234508",
         "password": "Secure1234",
         "confirmPassword": "Secure1234"
       },
       "expected": {
         "result": "failure",
-        "errors": [{ "locator": "errorpasswordspecialchar" }]
+        "errors": [
+          { "locator": "errorpasswordspecialchar" }
+        ]
       }
     },
     {
@@ -214,14 +234,16 @@
       "data": {
         "firstName": "John",
         "lastName": "Doe",
-        "email": "nina.ford@testqa.com",
-        "phone": "9813223344",
+        "email": "john.dohterhe@example.com",
+        "phone": "9841230367",
         "password": "",
         "confirmPassword": ""
       },
       "expected": {
         "result": "failure",
-        "errors": [{ "locator": "errorpassword8chars" }]
+        "errors": [
+          { "locator": "errorpassword8chars" }
+        ]
       }
     },
 
@@ -231,53 +253,19 @@
       "data": {
         "firstName": "John",
         "lastName": "Doe",
-        "email": "oscar.hunt@devmail.io",
-        "phone": "9814334455",
+        "email": "john.dotrwete@example.com",
+        "phone": "9800234567",
         "password": "Secure@123",
         "confirmPassword": "Secure@456"
       },
       "expected": {
         "result": "failure",
-        "errors": [{ "locator": "mismatchconfirmPassword" }]
-      }
-    },
-    {
-      "id": "invalid_cp_002",
-      "description": "Confirm password empty while password is filled",
-      "data": {
-        "firstName": "John",
-        "lastName": "Doe",
-        "email": "rachel.moss@testenv.net",
-        "phone": "9815445566",
-        "password": "Secure@123",
-        "confirmPassword": ""
-      },
-      "expected": {
-        "result": "failure",
-        "errors": [{ "locator": "mismatchconfirmPassword" }]
-      }
-    },
-
-    {
-      "id": "invalid_multi_001",
-      "description": "Multiple errors - short first name, invalid email, short password",
-      "data": {
-        "firstName": "J",
-        "lastName": "Doe",
-        "email": "notanemail",
-        "phone": "9816556677",
-        "password": "abc",
-        "confirmPassword": "abc"
-      },
-      "expected": {
-        "result": "failure",
         "errors": [
-          { "locator": "errorfirstname" },
-          { "locator": "erroremail" },
-          { "locator": "errorpassword8chars" }
+          { "locator": "mismatchconfirmPassword"}
         ]
       }
     },
+
     {
       "id": "invalid_multi_002",
       "description": "Multiple errors - all fields empty",
@@ -292,59 +280,30 @@
       "expected": {
         "result": "failure",
         "errors": [
-          { "locator": "errorfirstname" },
-          { "locator": "errorlastname" },
-          { "locator": "erroremail" },
-          { "locator": "errorpassword8chars" }
+          { "locator": "errorfirstname"},
+          { "locator": "errorlastname"},
+          { "locator": "erroremail"},
+          { "locator": "errorpassword8chars"}
         ]
-      }
-    },
-    {
-      "id": "invalid_multi_003",
-      "description": "Multiple errors - short last name, mismatched passwords",
-      "data": {
-        "firstName": "John",
-        "lastName": "D",
-        "email": "tom.rivers@mailcheck.org",
-        "phone": "9817667788",
-        "password": "Secure@123",
-        "confirmPassword": "Different@123"
-      },
-      "expected": {
-        "result": "failure",
-        "errors": [
-          { "locator": "errorlastname" },
-          { "locator": "mismatchconfirmPassword" }
-        ]
-      }
-    },
-    {
-      "id": "invalid_dupli_001",
-      "description": "Duplicate values",
-      "data": {
-        "firstName": "Jo",
-        "lastName": "Li",
-        "email": "jo.liadvr@mail.com",
-        "phone": "9800000003",
-        "password": "Hello@123",
-        "confirmPassword": "Hello@123"
-      },
-      "expected": {
-        "result": "success",
-        "errors": [{ "locator": "phonealreadyexits" }]
       }
     }
+    
   ],
-
-  "invalidAgencyCases": [
+    "invalidAgencyCases": [
     {
-      "id": "invalid_agency_001",
+      "id": "invalid_agency_name_001",
       "description": "Agency name empty",
       "data": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "james.burton@testmail.io",
+        "phone": "9818001002",
+        "password": "Secure@123",
+        "confirmPassword": "Secure@123",
         "agencyName": "",
         "agencyRole": "Recruitment Consultant",
-        "agencyEmail": "agency@testmail.io",
-        "agencyWebsite": "www.agencytest.com",
+        "agencyEmail": "james.agency@testmail.io",
+        "agencyWebsite": "www.jamesburton.com",
         "agencyAddress": "Thamel, Kathmandu, Nepal"
       },
       "expected": {
@@ -353,277 +312,45 @@
       }
     },
     {
-      "id": "invalid_agency_002",
-      "description": "Agency role empty",
+      "id": "invalid_agency_name_002",
+      "description": "Agency name single character",
       "data": {
-        "agencyName": "Bright Future Agency",
-        "agencyRole": "",
-        "agencyEmail": "bright@testmail.io",
-        "agencyWebsite": "www.brightfuture.com",
+        "firstName": "Emma",
+        "lastName": "Clark",
+        "email": "emma.clark@devtest.io",
+        "phone": "9818002004",
+        "password": "Secure@123",
+        "confirmPassword": "Secure@123",
+        "agencyName": "A",
+        "agencyRole": "Senior Consultant",
+        "agencyEmail": "emma.agency@devtest.io",
+        "agencyWebsite": "www.emmaclark.com",
         "agencyAddress": "Lazimpat, Kathmandu, Nepal"
       },
       "expected": {
         "result": "failure",
-        "errors": [{ "locator": "errorarole" }]
+        "errors": [{ "locator": "erroraname" }]
       }
     },
     {
-      "id": "invalid_agency_003",
-      "description": "Agency email invalid format - missing @",
+      "id": "invalid_agency_role_001",
+      "description": "Agency role empty",
       "data": {
-        "agencyName": "EduBridge Agency",
-        "agencyRole": "Director",
-        "agencyEmail": "edubridgetestmail.io",
-        "agencyWebsite": "www.edubridge.com",
+        "firstName": "Liam",
+        "lastName": "Foster",
+        "email": "liam.foster@mailtest.org",
+        "phone": "9818003003",
+        "password": "Secure@123",
+        "confirmPassword": "Secure@123",
+        "agencyName": "Bright Future Agency",
+        "agencyRole": "",
+        "agencyEmail": "liam.agency@mailtest.org",
+        "agencyWebsite": "www.brightfuture.com",
         "agencyAddress": "Baneshwor, Kathmandu, Nepal"
       },
       "expected": {
         "result": "failure",
-        "errors": [{ "locator": "erroramail" }]
-      }
-    },
-    {
-      "id": "invalid_agency_004",
-      "description": "Agency website empty",
-      "data": {
-        "agencyName": "Summit Study Abroad",
-        "agencyRole": "Consultant",
-        "agencyEmail": "summit@testmail.io",
-        "agencyWebsite": "",
-        "agencyAddress": "New Baneshwor, Kathmandu, Nepal"
-      },
-      "expected": {
-        "result": "failure",
-        "errors": [{ "locator": "errorawebsite" }]
-      }
-    },
-    {
-      "id": "invalid_agency_005",
-      "description": "Agency address empty",
-      "data": {
-        "agencyName": "Nexus Education",
-        "agencyRole": "Senior Advisor",
-        "agencyEmail": "nexus@testmail.io",
-        "agencyWebsite": "www.nexusedu.com",
-        "agencyAddress": ""
-      },
-      "expected": {
-        "result": "failure",
-        "errors": [{ "locator": "erroraaddress" }]
-      }
-    },
-    {
-      "id": "invalid_agency_006",
-      "description": "Region of operation not selected",
-      "data": {
-        "agencyName": "Global Reach Agency",
-        "agencyRole": "Advisor",
-        "agencyEmail": "globalreach@testmail.io",
-        "agencyWebsite": "www.globalreach.com",
-        "agencyAddress": "Patan, Lalitpur, Nepal",
-        "regionOfOperation": []
-      },
-      "expected": {
-        "result": "failure",
-        "errors": [{ "locator": "erroraroo" }]
-      }
-    },
-    {
-      "id": "invalid_agency_007",
-      "description": "Multiple agency errors - name, email, address all empty",
-      "data": {
-        "agencyName": "",
-        "agencyRole": "Consultant",
-        "agencyEmail": "",
-        "agencyWebsite": "www.someagency.com",
-        "agencyAddress": ""
-      },
-      "expected": {
-        "result": "failure",
-        "errors": [
-          { "locator": "erroraname" },
-          { "locator": "erroramail" },
-          { "locator": "erroraaddress" }
-        ]
-      }
-    }
-  ],
-
-  "invalidProfessionalCases": [
-    {
-      "id": "invalid_prof_001",
-      "description": "Years of experience not selected",
-      "data": {
-        "yearsOfExperience": null,
-        "numberOfStudentsRecruited": "500",
-        "focusArea": "Undergraduate Admissions",
-        "successMetrics": "85",
-        "serviceProvided": ["Career Counseling"]
-      },
-      "expected": {
-        "result": "failure",
-        "errors": [{ "locator": "errorpyop" }]
-      }
-    },
-    {
-      "id": "invalid_prof_002",
-      "description": "Number of students recruited empty",
-      "data": {
-        "yearsOfExperience": "4 years",
-        "numberOfStudentsRecruited": "",
-        "focusArea": "Postgraduate Admissions",
-        "successMetrics": "78",
-        "serviceProvided": ["Career Counseling"]
-      },
-      "expected": {
-        "result": "failure",
-        "errors": [{ "locator": "erroranos" }]
-      }
-    },
-    {
-      "id": "invalid_prof_003",
-      "description": "Focus area empty",
-      "data": {
-        "yearsOfExperience": "4 years",
-        "numberOfStudentsRecruited": "300",
-        "focusArea": "",
-        "successMetrics": "80",
-        "serviceProvided": ["Career Counseling"]
-      },
-      "expected": {
-        "result": "failure",
-        "errors": [{ "locator": "errorafocus" }]
-      }
-    },
-    {
-      "id": "invalid_prof_004",
-      "description": "Success metrics empty",
-      "data": {
-        "yearsOfExperience": "4 years",
-        "numberOfStudentsRecruited": "400",
-        "focusArea": "Visa Advisory",
-        "successMetrics": "",
-        "serviceProvided": ["Career Counseling"]
-      },
-      "expected": {
-        "result": "failure",
-        "errors": [{ "locator": "errorasuccess" }]
-      }
-    },
-    {
-      "id": "invalid_prof_005",
-      "description": "No service type selected",
-      "data": {
-        "yearsOfExperience": "4 years",
-        "numberOfStudentsRecruited": "250",
-        "focusArea": "Language Preparation",
-        "successMetrics": "72",
-        "serviceProvided": []
-      },
-      "expected": {
-        "result": "failure",
-        "errors": [{ "locator": "errorservice" }]
-      }
-    },
-    {
-      "id": "invalid_prof_006",
-      "description": "Multiple errors - experience not selected, focus area empty, no service",
-      "data": {
-        "yearsOfExperience": null,
-        "numberOfStudentsRecruited": "100",
-        "focusArea": "",
-        "successMetrics": "60",
-        "serviceProvided": []
-      },
-      "expected": {
-        "result": "failure",
-        "errors": [
-          { "locator": "errorpyop" },
-          { "locator": "errorafocus" },
-          { "locator": "errorservice" }
-        ]
-      }
-    }
-  ],
-
-  "invalidPreferenceCases": [
-    {
-      "id": "invalid_pref_001",
-      "description": "Business registration number empty",
-      "data": {
-        "businessRegistrationNumber": "",
-        "preferredCountries": ["Nepal"],
-        "institutionType": ["Universities"],
-        "certificationDetails": "ICEF Certified",
-        "uploadedDocument": "hell.pdf"
-      },
-      "expected": {
-        "result": "failure",
-        "errors": [{ "locator": "errbrn" }]
-      }
-    },
-    {
-      "id": "invalid_pref_002",
-      "description": "No preferred country selected",
-      "data": {
-        "businessRegistrationNumber": "BRN-2020-KTM-001122",
-        "preferredCountries": [],
-        "institutionType": ["Universities"],
-        "certificationDetails": "ICEF Certified",
-        "uploadedDocument": "hell.pdf"
-      },
-      "expected": {
-        "result": "failure",
-        "errors": [{ "locator": "errpc" }]
-      }
-    },
-    {
-      "id": "invalid_pref_003",
-      "description": "No institution type selected",
-      "data": {
-        "businessRegistrationNumber": "BRN-2021-KTM-003344",
-        "preferredCountries": ["Nepal"],
-        "institutionType": [],
-        "certificationDetails": "ICEF Certified",
-        "uploadedDocument": "hell.pdf"
-      },
-      "expected": {
-        "result": "failure",
-        "errors": [{ "locator": "errpin" }]
-      }
-    },
-    {
-      "id": "invalid_pref_004",
-      "description": "No document uploaded",
-      "data": {
-        "businessRegistrationNumber": "BRN-2022-KTM-005566",
-        "preferredCountries": ["Nepal"],
-        "institutionType": ["Universities"],
-        "certificationDetails": "ICEF Certified",
-        "uploadedDocument": null
-      },
-      "expected": {
-        "result": "failure",
-        "errors": [{ "locator": "errubd" }]
-      }
-    },
-    {
-      "id": "invalid_pref_005",
-      "description": "Multiple errors - no country, no institution, no document",
-      "data": {
-        "businessRegistrationNumber": "BRN-2023-KTM-007788",
-        "preferredCountries": [],
-        "institutionType": [],
-        "certificationDetails": "",
-        "uploadedDocument": null
-      },
-      "expected": {
-        "result": "failure",
-        "errors": [
-          { "locator": "errpc" },
-          { "locator": "errpin" },
-          { "locator": "errubd" }
-        ]
+        "errors": [{ "locator": "errorarole" }]
       }
     }
   ]

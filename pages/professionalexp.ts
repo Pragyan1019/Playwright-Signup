@@ -45,5 +45,6 @@ export class Professional{
     }
     async nextclick(){
         await this.nextbtn.click()
+        await this.page.waitForURL('**/register?step=verification');
     }
 }
