@@ -1,4 +1,12 @@
 import { Page, Locator } from '@playwright/test'
+function generate(){
+    let prefix = ['98','97'];
+    let pre = prefix[Math.floor((Math.random())*prefix.length)]
+    let remain = Math.floor((Math.random())*100000000).toString().padStart(8,'0')
+    return pre+remain;
+}
+
+const phonenum = generate();
 
 
 export class Setup {
@@ -51,7 +59,7 @@ export class Setup {
         await this.firstname.fill(firstname);
         await this.lastname.fill(lastname);
         await this.email.fill(email);
-        await this.phone.fill(phone);
+        await this.phone.fill(phonenum);
         await this.password.fill(password);
         await this.confirmPassword.fill(confirmPassword);
     }

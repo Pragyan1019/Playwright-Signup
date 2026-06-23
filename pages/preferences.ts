@@ -1,4 +1,7 @@
 import {Page,Locator} from '@playwright/test';
+
+
+
 export class Preference{
     page:Page;
     crf:Locator
@@ -21,7 +24,7 @@ export class Preference{
         this.nep =page.locator('div').filter({ hasText: /^Nepal$/ }) 
         this.pin = page.getByRole('checkbox', { name: 'Universities' })
         this.cd = page.getByRole('textbox', { name: 'Certification Details (' })
-        this.ubd = page.locator('.flex.flex-col.items-center').first()
+        this.ubd = page.locator('input[type="file"]').first()
         this.nextclick = page.getByRole('button', { name: 'Submit' })
         this.errbrn = page.getByText('Please enter your')
         this.errpc = page.getByText('You have to select at least one country.')
@@ -39,7 +42,7 @@ export class Preference{
         await this.pin.click();
         await this.cd.click();
         await this.cd.fill(cd);
-        await this.ubd.setInputFiles('D:/Projects/Vrit tech initiall/hell.pdf')
+        await this.ubd.setInputFiles('./testdata/hell.pdf');
         
     }
     async submit(){
