@@ -1,117 +1,55 @@
 import { APIRequestContext } from '@playwright/test';
 
-const BASE_URL = 'https://api.guerrillamail.com/ajax.php';
+const BASE = 'https://api.mail.tm';
+const pass = 'Vritt@12345';
 
-// ─── Generate unique inbox name per test run ───────────────────────────────────
-export function generateInbox(): string {
-  return `testuser_${Date.now()}`;
+export async function createTempMail(request: APIRequestContext) {
+  const d = await request.get(`${BASE}/domains`);
+  const domainData = await d.json();
+  const domain = domainData['hydra:member'][0].domain;
+
+  const address = 'Vritttechnology' + Date.now() + '@' + domain;
+
+  await request.post(`${BASE}/accounts`, { data: { address: address, password: pass } });
+  const t = await request.post(`${BASE}/token`, { data: { address: address, password: pass } });
+  const tokenData = await t.json();
+
+  console.log('mail created', address);
+  return { email: address, token: tokenData.token };
 }
 
-// ─── Strip HTML tags and decode entities from email body ──────────────────────
-function stripHTML(html: string): string {
-  return html
-    .replace(/<[^>]*>/g, ' ')    // remove all HTML tags
-    .replace(/&amp;/g, '&')      // decode HTML entities
-    .replace(/&nbsp;/g, ' ')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/\s+/g, ' ')        // collapse whitespace
-    .trim();
-}
+export async function getOTP(request: APIRequestContext, token: string) {
+  const headers = { Authorization: 'Bearer ' + token };
 
-// ─── Step 1 & 2: Start session and set custom inbox name ─────────────────────
-export async function createGuerrillaSession(
-  request: APIRequestContext,
-  inbox: string
-): Promise<{ email: string; sidToken: string }> {
+  for (let i = 1; i <= 15; i++) {
+    try {
+      const res = await request.get(`${BASE}/messages`, { headers });
+      const data = await res.json();
+      const mails = data['hydra:member'];
+      console.log('attempt', i, 'mails:', mails.length);
 
-  // Step 1: Get a session token
-  const sessionRes = await request.get(`${BASE_URL}?f=get_email_address`);
+      for (const m of mails) {
+        let text = m.subject + ' ' + m.intro;
+        let match = text.match(/\b\d{6}\b/);
 
-  if (!sessionRes.ok()) {
-    throw new Error(`Failed to create Guerrilla Mail session: ${sessionRes.status()}`);
-  }
+        if (!match) {
+          const full = await request.get(`${BASE}/messages/${m.id}`, { headers });
+          const fullData = await full.json();
+          text = fullData.text + ' ' + fullData.html;
+          match = text.match(/\b\d{6}\b/);
+        }
 
-  const sessionData = await sessionRes.json();
-  const sidToken: string = sessionData.sid_token;
-
-  console.log('[GuerrillaMail] Session token obtained:', sidToken);
-  console.log('[GuerrillaMail] Default email:', sessionData.email_addr);
-
-  // Step 2: Set custom inbox name using sid_token
-  const setRes = await request.get(
-    `${BASE_URL}?f=set_email_user&email_user=${inbox}&sid_token=${sidToken}`
-  );
-
-  if (!setRes.ok()) {
-    throw new Error(`Failed to set Guerrilla Mail inbox: ${setRes.status()}`);
-  }
-
-  const setData = await setRes.json();
-  const email: string = setData.email_addr;
-
-  console.log('[GuerrillaMail] Custom inbox set:', email);
-
-  return { email, sidToken };
-}
-
-// ─── Step 3 & 4: Poll inbox and extract OTP ───────────────────────────────────
-export async function getOTPFromGuerrillaMail(
-  request: APIRequestContext,
-  sidToken: string,
-  retries = 10,
-  intervalMs = 3000
-): Promise<string> {
-
-  for (let i = 0; i < retries; i++) {
-
-    // Step 3: Check inbox for new emails
-    const checkRes = await request.get(
-      `${BASE_URL}?f=check_email&sid_token=${sidToken}&seq=0`
-    );
-
-    if (!checkRes.ok()) {
-      throw new Error(`Failed to check Guerrilla Mail inbox: ${checkRes.status()}`);
+        if (match) {
+          console.log('otp is', match[0]);
+          return match[0];
+        }
+      }
+    } catch (e) {
+      console.log('something went wrong, trying again');
     }
 
-    const checkData = await checkRes.json();
-    console.log(`[GuerrillaMail] Attempt ${i + 1}/${retries} — emails in inbox: ${checkData.list?.length ?? 0}`);
-
-    if (checkData.list && checkData.list.length > 0) {
-      const mailId: string = checkData.list[0].mail_id;
-      console.log('[GuerrillaMail] Mail ID found:', mailId);
-
-      // Step 4: Fetch full email body using mail_id
-      const fetchRes = await request.get(
-        `${BASE_URL}?f=fetch_email&email_id=${mailId}&sid_token=${sidToken}`
-      );
-
-      if (!fetchRes.ok()) {
-        throw new Error(`Failed to fetch email body: ${fetchRes.status()}`);
-      }
-
-      const fetchData = await fetchRes.json();
-      const rawBody: string = fetchData.mail_body;
-
-      // Strip HTML so regex works correctly
-      const plainText = stripHTML(rawBody);
-      console.log('[GuerrillaMail] Plain text body:', plainText);
-
-      // Extract 6-digit OTP
-      const match = plainText.match(/\b\d{6}\b/);
-      if (match) {
-        console.log('[GuerrillaMail] OTP extracted:', match[0]);
-        return match[0];
-      }
-
-      console.log('[GuerrillaMail] Email found but no 6-digit OTP matched');
-    }
-
-    // Wait before next poll
-    console.log(`[GuerrillaMail] Waiting ${intervalMs}ms before retry...`);
-    await new Promise(r => setTimeout(r, intervalMs));
+    await new Promise(r => setTimeout(r, 3000));
   }
 
-  throw new Error('[GuerrillaMail] OTP not received after max retries');
+  throw new Error('OTP not received');
 }

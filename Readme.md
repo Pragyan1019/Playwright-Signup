@@ -100,7 +100,7 @@ npx playwright test example.spec.ts
 
 ### Run with headed browser (visible browser window)
 ```bash
-npx playwright test example.spec.ts --headed
+npx playwright test signup_a.spec.ts --headed
 ```
 
 ### Run a specific test by name

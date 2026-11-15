@@ -3,7 +3,7 @@ import { Setup} from '../pages/signin';
 import { EmailVerification } from '../pages/emailverification';
 import { mytest as test } from '../fixture/signup.fixture';
 
-import { generateInbox, createGuerrillaSession, getOTPFromGuerrillaMail } 
+import { createTempMail, getOTP } 
  from '../utils/emailotp';
 
 import userdata from '../utils/signinfirst.data.json';
@@ -30,12 +30,11 @@ test.describe('Sign In Page', () => {
     userdata.validCases.forEach(({id,description,data})=>{
         test(` ${id} : ${description}`, async ({ setup,emailverification,agency,preference,professional, request }) => {
             test.setTimeout(90000);
-                const inbox = generateInbox();
-  const { email, sidToken } = await createGuerrillaSession(request, inbox);
+  const { email, token } = await await createTempMail(request);
   console.log('Using email:', email);            await setup.fillForm(data.firstName, data.lastName, email, data.phone, data.password, data.confirmPassword);
             await setup.clickNext();
             await expect(emailverification.verificationform).toBeVisible();
-  const otp = await getOTPFromGuerrillaMail(request, sidToken);
+  const otp = await getOTP(request, token);
             await expect(emailverification.verificationform).toBeVisible();
             await emailverification.fillTextbox(otp);
             await emailverification.submitcod();
