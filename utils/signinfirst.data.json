@@ -1,31 +1,31 @@
 {
   "validCases": [
-{
-  "id": "valid_001",
-  "description": "All fields valid - standard user",
-  "data": {
-    "firstName": "John",
-    "lastName": "Doe",
-    "email": "rovise7549@synsky.com",
-    "phone": "9700000914",
-    "password": "Secure@123",
-    "confirmPassword": "Secure@123",
-    "agencyName": "Global EduPath Agency",
-    "agencyRole": "Authorized Student Recruitment Consultant",
-    "agencyEmail": "contact@globaledupathagency.com",
-    "agencyWebsite": "www.globaledupathagency.com",
-    "agencyAddress": "45 Education Hub Street, Thamel, Kathmandu, Nepal",
-    "numberOfStudentsRecruited": "1240",
-    "focusArea": "Scholarship Advisory",
-    "successMetrics": "94",
-    "businessRegistrationNumber": "BRN-2019-KTM-007842",
-    "certificationDetail": "ICEF Certified Agency, issued 2021-03-15, expires 2026-03-14"
-  },
-  "expected": {
-    "result": "success",
-    "errors": []
-  } 
-}
+    {
+      "id": "valid_001",
+      "description": "All fields valid - standard user",
+      "data": {
+        "firstName": "Prabin",
+        "lastName": "Adhikari",
+        "email": "prabin.adhikari.7305@gmail.com",
+        "phone": "9803759126",
+        "password": "Strong#456",
+        "confirmPassword": "Strong#456",
+        "agencyName": "Himalayan Scholars Network",
+        "agencyRole": "Certified Education Counselor",
+        "agencyEmail": "himalayan.scholars.4812@gmail.com",
+        "agencyWebsite": "www.himalayanscholars.com",
+        "agencyAddress": "12 Learning Plaza, Baneshwor, Kathmandu, Nepal",
+        "numberOfStudentsRecruited": "860",
+        "focusArea": "Study Abroad Counselling",
+        "successMetrics": "89",
+        "businessRegistrationNumber": "BRN-2021-KTM-013569",
+        "certificationDetail": "PIER Qualified Agency, issued 2024-06-10, expires 2027-06-09"
+      },
+      "expected": {
+        "result": "success",
+        "errors": []
+      }
+    }
   ],
 
   "invalidCases": [
@@ -33,12 +33,12 @@
       "id": "invalid_fn_001",
       "description": "First name too short - single character",
       "data": {
-        "firstName": "Jane",
-        "lastName": "Doe",
-        "email": "jannnfafdne.doe@example.com",
-        "phone": "9876834567",
-        "password": "Secure@123",
-        "confirmPassword": "Secure@123"
+        "firstName": "M",
+        "lastName": "Shrestha",
+        "email": "m.shrestha.5196@gmail.com",
+        "phone": "9867421803",
+        "password": "Strong#456",
+        "confirmPassword": "Strong#456"
       },
       "expected": {
         "result": "failure",
@@ -50,11 +50,11 @@
       "description": "First name empty",
       "data": {
         "firstName": "",
-        "lastName": "Doe",
-        "email": "tesfadst@example.com",
-        "phone": "9841234567",
-        "password": "Secure@123",
-        "confirmPassword": "Secure@123"
+        "lastName": "Poudel",
+        "email": "poudel.8247@gmail.com",
+        "phone": "9815096347",
+        "password": "Strong#456",
+        "confirmPassword": "Strong#456"
       },
       "expected": {
         "result": "failure",
@@ -68,12 +68,12 @@
       "id": "invalid_ln_001",
       "description": "Last name too short - single character",
       "data": {
-        "firstName": "John",
-        "lastName": "D",
-        "email": "john.dgsdsg@example.com",
-        "phone": "9841234567",
-        "password": "Secure@123",
-        "confirmPassword": "Secure@123"
+        "firstName": "Suraj",
+        "lastName": "B",
+        "email": "suraj.b.3torn61@gmail.com",
+        "phone": "9744630982",
+        "password": "Strong#456",
+        "confirmPassword": "Strong#456"
       },
       "expected": {
         "result": "failure",
@@ -86,12 +86,12 @@
       "id": "invalid_ln_002",
       "description": "Last name empty",
       "data": {
-        "firstName": "John",
+        "firstName": "Dipesh",
         "lastName": "",
-        "email": "johnjlf@example.com",
-        "phone": "9841234590",
-        "password": "Secure@123",
-        "confirmPassword": "Secure@123"
+        "email": "dipesh.9054@gmail.com",
+        "phone": "9852817045",
+        "password": "Strong#456",
+        "confirmPassword": "Strong#456"
       },
       "expected": {
         "result": "failure",
@@ -105,17 +105,17 @@
       "id": "invalid_em_001",
       "description": "Email missing @ symbol",
       "data": {
-        "firstName": "John",
-        "lastName": "Doe",
-        "email": "johndofteexample.com",
-        "phone": "9841230067",
-        "password": "Secure@123",
-        "confirmPassword": "Secure@123"
+        "firstName": "Manish",
+        "lastName": "Maharjan",
+        "email": "manish.maharjan7291gmail.com",
+        "phone": "9829364178",
+        "password": "Strong#456",
+        "confirmPassword": "Strong#456"
       },
       "expected": {
         "result": "failure",
         "errors": [
-          { "locator": "erroremail"}
+          { "locator": "erroremail" }
         ]
       }
     },
@@ -123,12 +123,12 @@
       "id": "invalid_em_002",
       "description": "Email missing domain",
       "data": {
-        "firstName": "John",
-        "lastName": "Doe",
-        "email": "john@",
-        "phone": "9840034567",
-        "password": "Secure@123",
-        "confirmPassword": "Secure@123"
+        "firstName": "Manish",
+        "lastName": "Maharjan",
+        "email": "manish.maharjan7291@",
+        "phone": "9761905432",
+        "password": "Strong#456",
+        "confirmPassword": "Strong#456"
       },
       "expected": {
         "result": "failure",
@@ -141,12 +141,12 @@
       "id": "invalid_em_003",
       "description": "Email missing TLD",
       "data": {
-        "firstName": "John",
-        "lastName": "Doe",
-        "email": "jojghn@example",
-        "phone": "9841234522",
-        "password": "Secure@123",
-        "confirmPassword": "Secure@123"
+        "firstName": "Manish",
+        "lastName": "Maharjan",
+        "email": "manish.m7291@gmail",
+        "phone": "9847250619",
+        "password": "Strong#456",
+        "confirmPassword": "Strong#456"
       },
       "expected": {
         "result": "failure",
@@ -159,12 +159,12 @@
       "id": "invalid_em_004",
       "description": "Email with spaces",
       "data": {
-        "firstName": "John",
-        "lastName": "Doe",
-        "email": "john doe@example.com",
-        "phone": "9841234544",
-        "password": "Secure@123",
-        "confirmPassword": "Secure@123"
+        "firstName": "Manish",
+        "lastName": "Maharjan",
+        "email": "manish maharjan7291@gmail.com",
+        "phone": "9806183527",
+        "password": "Strong#456",
+        "confirmPassword": "Strong#456"
       },
       "expected": {
         "result": "failure",
@@ -178,12 +178,12 @@
       "id": "invalid_pw_001",
       "description": "Password too short - less than 8 characters",
       "data": {
-        "firstName": "John",
-        "lastName": "Doe",
-        "email": "john.doeuwwer@example.com",
-        "phone": "9841234523",
-        "password": "Ab@1",
-        "confirmPassword": "Ab@1"
+        "firstName": "Anjali",
+        "lastName": "Bhandari",
+        "email": "anjali.bhandari.6628@gmail.com",
+        "phone": "9712748360",
+        "password": "Xy#7",
+        "confirmPassword": "Xy#7"
       },
       "expected": {
         "result": "failure",
@@ -196,12 +196,12 @@
       "id": "invalid_pw_002",
       "description": "Password missing number",
       "data": {
-        "firstName": "John",
-        "lastName": "Doe",
-        "email": "john.dohweae@example.com",
-        "phone": "9841234090",
-        "password": "Secure@abc",
-        "confirmPassword": "Secure@abc"
+        "firstName": "Anjali",
+        "lastName": "Bhandari",
+        "email": "anjali.bhandari.1873@gmail.com",
+        "phone": "9863092751",
+        "password": "Strong#abc",
+        "confirmPassword": "Strong#abc"
       },
       "expected": {
         "result": "failure",
@@ -214,12 +214,12 @@
       "id": "invalid_pw_003",
       "description": "Password missing special character",
       "data": {
-        "firstName": "John",
-        "lastName": "Doe",
-        "email": "john.dohtre@example.com",
-        "phone": "9841234508",
-        "password": "Secure1234",
-        "confirmPassword": "Secure1234"
+        "firstName": "Anjali",
+        "lastName": "Bhandari",
+        "email": "anjali.bhandari.9340@gmail.com",
+        "phone": "9819547206",
+        "password": "Strong5678",
+        "confirmPassword": "Strong5678"
       },
       "expected": {
         "result": "failure",
@@ -232,10 +232,10 @@
       "id": "invalid_pw_004",
       "description": "Password empty",
       "data": {
-        "firstName": "John",
-        "lastName": "Doe",
-        "email": "john.dohterhe@example.com",
-        "phone": "9841230367",
+        "firstName": "Anjali",
+        "lastName": "Bhandari",
+        "email": "anjali.bhandari.2765@gmail.com",
+        "phone": "9758310684",
         "password": "",
         "confirmPassword": ""
       },
@@ -251,17 +251,17 @@
       "id": "invalid_cp_001",
       "description": "Confirm password does not match",
       "data": {
-        "firstName": "John",
-        "lastName": "Doe",
-        "email": "john.dotrwete@example.com",
-        "phone": "9800234567",
-        "password": "Secure@123",
-        "confirmPassword": "Secure@456"
+        "firstName": "Rajan",
+        "lastName": "Magar",
+        "email": "rajan.magar.4509@gmail.com",
+        "phone": "9844905163",
+        "password": "Strong#456",
+        "confirmPassword": "Strong#789"
       },
       "expected": {
         "result": "failure",
         "errors": [
-          { "locator": "mismatchconfirmPassword"}
+          { "locator": "mismatchconfirmPassword" }
         ]
       }
     },
@@ -280,31 +280,31 @@
       "expected": {
         "result": "failure",
         "errors": [
-          { "locator": "errorfirstname"},
-          { "locator": "errorlastname"},
-          { "locator": "erroremail"},
-          { "locator": "errorpassword8chars"}
+          { "locator": "errorfirstname" },
+          { "locator": "errorlastname" },
+          { "locator": "erroremail" },
+          { "locator": "errorpassword8chars" }
         ]
       }
     }
-    
   ],
-    "invalidAgencyCases": [
+
+  "invalidAgencyCases": [
     {
       "id": "invalid_agency_name_001",
       "description": "Agency name empty",
       "data": {
-        "firstName": "John",
-        "lastName": "Doe",
-        "email": "james.burton@testmail.io",
-        "phone": "9818001002",
-        "password": "Secure@123",
-        "confirmPassword": "Secure@123",
+        "firstName": "Bibek",
+        "lastName": "Dahal",
+        "email": "bibek.dahal.8132@gmail.com",
+        "phone": "9832671590",
+        "password": "Strong#456",
+        "confirmPassword": "Strong#456",
         "agencyName": "",
-        "agencyRole": "Recruitment Consultant",
-        "agencyEmail": "james.agency@testmail.io",
-        "agencyWebsite": "www.jamesburton.com",
-        "agencyAddress": "Thamel, Kathmandu, Nepal"
+        "agencyRole": "Admissions Consultant",
+        "agencyEmail": "northstar.edu.3957@gmail.com",
+        "agencyWebsite": "www.northstaredu.com",
+        "agencyAddress": "Putalisadak, Kathmandu, Nepal"
       },
       "expected": {
         "result": "failure",
@@ -315,17 +315,17 @@
       "id": "invalid_agency_name_002",
       "description": "Agency name single character",
       "data": {
-        "firstName": "Emma",
-        "lastName": "Clark",
-        "email": "emma.clark@devtest.io",
-        "phone": "9818002004",
-        "password": "Secure@123",
-        "confirmPassword": "Secure@123",
-        "agencyName": "A",
-        "agencyRole": "Senior Consultant",
-        "agencyEmail": "emma.agency@devtest.io",
-        "agencyWebsite": "www.emmaclark.com",
-        "agencyAddress": "Lazimpat, Kathmandu, Nepal"
+        "firstName": "Pooja",
+        "lastName": "Ghimire",
+        "email": "pooja.ghimire.6471@gmail.com",
+        "phone": "9767429315",
+        "password": "Strong#456",
+        "confirmPassword": "Strong#456",
+        "agencyName": "Z",
+        "agencyRole": "Lead Counselor",
+        "agencyEmail": "summit.pathways.2084@gmail.com",
+        "agencyWebsite": "www.summitpathways.com",
+        "agencyAddress": "Maharajgunj, Kathmandu, Nepal"
       },
       "expected": {
         "result": "failure",
@@ -336,17 +336,17 @@
       "id": "invalid_agency_role_001",
       "description": "Agency role empty",
       "data": {
-        "firstName": "Liam",
-        "lastName": "Foster",
-        "email": "liam.foster@mailtest.org",
-        "phone": "9818003003",
-        "password": "Secure@123",
-        "confirmPassword": "Secure@123",
-        "agencyName": "Bright Future Agency",
+        "firstName": "Nirajan",
+        "lastName": "Khadka",
+        "email": "nirajan.khadka.5813@gmail.com",
+        "phone": "9813086472",
+        "password": "Strong#456",
+        "confirmPassword": "Strong#456",
+        "agencyName": "Horizon Study Partners",
         "agencyRole": "",
-        "agencyEmail": "liam.agency@mailtest.org",
-        "agencyWebsite": "www.brightfuture.com",
-        "agencyAddress": "Baneshwor, Kathmandu, Nepal"
+        "agencyEmail": "horizon.study.7726@gmail.com",
+        "agencyWebsite": "www.horizonstudy.com",
+        "agencyAddress": "Kalanki, Kathmandu, Nepal"
       },
       "expected": {
         "result": "failure",

@@ -42,7 +42,7 @@ export class Preference{
         await this.pin.click();
         await this.cd.click();
         await this.cd.fill(cd);
-        await this.ubd.setInputFiles('./testdata/hell.pdf');
+        await this.ubd.setInputFiles('./testdata/Inputform.pdf');
         
     }
     async submit(){
